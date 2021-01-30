@@ -1,0 +1,12 @@
+name: Lobby
+main: net.craftions.lobby.Lobby
+version: ${project.version}
+api-version: 1.16
+commands:
+  lobbyconf:
+    aliases:
+      - lc
+      - conf
+      - loconf
+    usage: /<command> <params...>
+    permission: craftions.lobby.command
