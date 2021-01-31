@@ -15,6 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -36,34 +37,34 @@ public class Lobby extends JavaPlugin {
         File locationConf = new File("./plugins/lobby/locations.yml");
         if(createFolderRoot(systemConf)){
             try {
-                byte[] content = Files.readAllBytes(Paths.get(getClass().getResource("/system.clean.yml").getPath()));
+                byte[] content = Files.readAllBytes(Paths.get(getClass().getResource("/system.clean.yml").toURI()));
                 systemConf.createNewFile();
                 FileWriter w = new FileWriter(systemConf);
                 w.write(new String(content, StandardCharsets.UTF_8));
                 w.close();
-            } catch (IOException e) {
+            } catch (IOException | URISyntaxException e) {
                 e.printStackTrace();
             }
         }
         if(createFolderRoot(messageConf)){
             try {
-                byte[] content = Files.readAllBytes(Paths.get(getClass().getResource("/messages.clean.yml").getPath()));
-                systemConf.createNewFile();
+                byte[] content = Files.readAllBytes(Paths.get(getClass().getResource("/messages.clean.yml").toURI()));
+                messageConf.createNewFile();
                 FileWriter w = new FileWriter(messageConf);
                 w.write(new String(content, StandardCharsets.UTF_8));
                 w.close();
-            } catch (IOException e) {
+            } catch (IOException | URISyntaxException e) {
                 e.printStackTrace();
             }
         }
         if(createFolderRoot(locationConf)){
             try {
-                byte[] content = Files.readAllBytes(Paths.get(getClass().getResource("/locations.clean.yml").getPath()));
-                systemConf.createNewFile();
+                byte[] content = Files.readAllBytes(Paths.get(getClass().getResource("/locations.clean.yml").toURI()));
+                locationConf.createNewFile();
                 FileWriter w = new FileWriter(locationConf);
                 w.write(new String(content, StandardCharsets.UTF_8));
                 w.close();
-            } catch (IOException e) {
+            } catch (IOException | URISyntaxException e) {
                 e.printStackTrace();
             }
         }
