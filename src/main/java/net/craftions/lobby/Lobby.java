@@ -9,11 +9,12 @@ import net.craftions.lobby.config.Config;
 import net.craftions.lobby.events.EventBlockBreak;
 import net.craftions.lobby.events.EventPlayerDisconnect;
 import net.craftions.lobby.events.EventPlayerJoin;
-import net.craftions.lobby.util.Util;
 import org.bukkit.Bukkit;
+import org.bukkit.craftbukkit.libs.org.apache.commons.io.FileUtils;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.io.IOException;
 
 public class Lobby extends JavaPlugin {
 
@@ -31,13 +32,25 @@ public class Lobby extends JavaPlugin {
         File messageConf = new File("./plugins/lobby/messages.yml");
         File locationConf = new File("./plugins/lobby/locations.yml");
         if(createFolderRoot(systemConf)){
-            Util.copy(getClass().getResourceAsStream("/system.clean.yml"), systemConf.getParentFile().getAbsolutePath() + "/plugins/Lobby/system.yml");
+            try {
+                FileUtils.copyURLToFile(getClass().getClassLoader().getResource("/system.clean.yml"), new File(systemConf.getParentFile().getAbsolutePath() + "/plugins/Lobby/system.yml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         if(createFolderRoot(messageConf)){
-            Util.copy(getClass().getResourceAsStream("/messages.clean.yml"), systemConf.getParentFile().getAbsolutePath() + "/plugins/Lobby/messages.yml");
+            try {
+                FileUtils.copyURLToFile(getClass().getClassLoader().getResource("/messages.clean.yml"), new File(systemConf.getParentFile().getAbsolutePath() + "/plugins/Lobby/messages.yml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         if(createFolderRoot(locationConf)){
-            Util.copy(getClass().getResourceAsStream("/locations.clean.yml"), systemConf.getParentFile().getAbsolutePath() + "/plugins/Lobby/locations.yml");
+            try {
+                FileUtils.copyURLToFile(getClass().getClassLoader().getResource("/locations.clean.yml"), new File(systemConf.getParentFile().getAbsolutePath() + "/plugins/Lobby/locations.yml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         Config sysConf = new Config(systemConf, "system");
         Config msgConf = new Config(messageConf, "message");
