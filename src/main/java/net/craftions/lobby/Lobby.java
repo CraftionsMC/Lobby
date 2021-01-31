@@ -29,13 +29,13 @@ public class Lobby extends JavaPlugin {
         File systemConf = new File("./plugins/Lobby/system.yml");
         File messageConf = new File("./plugins/lobby/messages.yml");
         File locationConf = new File("./plugins/lobby/locations.yml");
-        if(createFolderRoot(systemConf)){
+        if(createFolderRoot(systemConf) && !systemConf.exists()){
             Download.download("https://cdn.craftions.net/plugins/Lobby/default/system.clean.yml", systemConf);
         }
-        if(createFolderRoot(messageConf)){
+        if(createFolderRoot(messageConf) && !messageConf.exists()){
             Download.download("https://cdn.craftions.net/plugins/Lobby/default/messages.clean.yml", messageConf);
         }
-        if(createFolderRoot(locationConf)){
+        if(createFolderRoot(locationConf) && !locationConf.exists()){
             Download.download("https://cdn.craftions.net/plugins/Lobby/default/locations.clean.yml", locationConf);
         }
         Config sysConf = new Config(systemConf, "system");

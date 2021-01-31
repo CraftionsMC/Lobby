@@ -7,6 +7,6 @@ authors:
 commands:
   setspawn:
     permission: craftions.lobby.command.setspawn
-    usage: /lobby
+    usage: /setspawn
   spawn:
     usage: /spawn

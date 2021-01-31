@@ -18,7 +18,9 @@ public class CommandSetSpawn implements CommandExecutor {
             if(args.length == 0){
                 Config.getInstance("locations").set("spawn", ((Player) sender).getLocation());
                 Config.getInstance("locations").reload(true);
-                sender.sendMessage(Lobby.getInstance().getPrefix() + Config.getInstance("message").get("success"));
+                String msg = (String) Config.getInstance("message").get("success");
+                msg = msg.replaceAll("&", "§");
+                sender.sendMessage(Lobby.getInstance().getPrefix() + msg);
             }else {
                 sender.sendMessage(Lobby.getInstance().getPrefix() + "§cPlease use §e" + command.getUsage());
             }
