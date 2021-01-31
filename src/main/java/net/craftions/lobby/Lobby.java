@@ -33,21 +33,21 @@ public class Lobby extends JavaPlugin {
         File locationConf = new File("./plugins/lobby/locations.yml");
         if(createFolderRoot(systemConf)){
             try {
-                FileUtils.copyURLToFile(getClass().getClassLoader().getResource("/system.clean.yml"), new File(systemConf.getParentFile().getAbsolutePath() + "/plugins/Lobby/system.yml"));
+                FileUtils.copyInputStreamToFile(this.getResource("/system.clean.yml"), new File("./plugins/Lobby/system.yml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         if(createFolderRoot(messageConf)){
             try {
-                FileUtils.copyURLToFile(getClass().getClassLoader().getResource("/messages.clean.yml"), new File(systemConf.getParentFile().getAbsolutePath() + "/plugins/Lobby/messages.yml"));
+                FileUtils.copyInputStreamToFile(this.getResource("/messages.clean.yml"), new File("./plugins/Lobby/messages.yml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         if(createFolderRoot(locationConf)){
             try {
-                FileUtils.copyURLToFile(getClass().getClassLoader().getResource("/locations.clean.yml"), new File(systemConf.getParentFile().getAbsolutePath() + "/plugins/Lobby/locations.yml"));
+                FileUtils.copyInputStreamToFile(this.getResource("/locations.clean.yml"), new File("./plugins/Lobby/locations.yml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }

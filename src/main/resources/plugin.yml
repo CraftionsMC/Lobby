@@ -1,6 +1,6 @@
 name: Lobby
 main: net.craftions.lobby.Lobby
-version: ${project.version}
+version: 1.0-SNAPSHOT
 api-version: 1.16
 commands:
   setspawn:
