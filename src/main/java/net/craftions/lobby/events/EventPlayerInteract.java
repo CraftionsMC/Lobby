@@ -13,10 +13,12 @@ public class EventPlayerInteract implements Listener {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent e){
-        String display = (String) Config.getInstance("menu").get("item_name");
-        display = display.replaceAll("&", "§");
-        if(e.getItem().getItemMeta().getDisplayName().equals(display)){
-            e.getPlayer().openInventory(Menu.getMenu());
-        }
+        try {
+            String display = (String) Config.getInstance("menu").get("item_name");
+            display = display.replaceAll("&", "§");
+            if(e.getItem().getItemMeta().getDisplayName().equals(display)){
+                e.getPlayer().openInventory(Menu.getMenu());
+            }
+        }catch (NullPointerException ex){}
     }
 }

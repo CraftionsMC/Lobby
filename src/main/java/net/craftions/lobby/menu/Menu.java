@@ -19,7 +19,9 @@ public class Menu {
     public static HashMap<ItemStack, Location> tpTo = new HashMap<>();
 
     public static Inventory getMenu(){
-        Inventory inv = Bukkit.createInventory(null, InventoryType.CHEST, (String) Config.getInstance("menu").get("menu_title"));
+        String title = (String) Config.getInstance("menu").get("menu_title");
+        title = title.replaceAll("&", "§");
+        Inventory inv = Bukkit.createInventory(null, InventoryType.CHEST, title);
         for(String s : Config.getInstance("menu").getAll("content", false)){
             System.out.println("Addind item " + s);
             int slot = (int) Config.getInstance("menu").get("content." + s + ".slot");
