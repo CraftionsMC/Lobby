@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 public class Config {
 
@@ -41,6 +42,10 @@ public class Config {
 
     public Object get(String path){
         return this.conf.get(path);
+    }
+
+    public Set<String> getAll(String path, Boolean keys){
+        return this.conf.getConfigurationSection(path).getKeys(keys);
     }
 
     protected void save() {

@@ -1,0 +1,17 @@
+item: 'COMPASS'
+item_name: '&2MENU'
+menu_title: '&2Menu'
+content:
+  skywars:
+    slot: 0
+    type: 'IRON_SWORD'
+    display: '&cSkyWars'
+    action: 'teleport' # teleport or none
+    teleport:
+      ==: org.bukkit.Location
+      world: world
+      x: 0
+      y: 0
+      z: 0
+      pitch: 0
+      yaw: 0

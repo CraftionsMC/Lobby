@@ -27,6 +27,7 @@ public class Lobby extends JavaPlugin {
         File systemConf = new File("./plugins/Lobby/system.yml");
         File messageConf = new File("./plugins/lobby/messages.yml");
         File locationConf = new File("./plugins/lobby/locations.yml");
+        File menuConf = new File("./plugins/lobby/menu.yml");
         if(createFolderRoot(systemConf) && !systemConf.exists()){
             Download.download("https://cdn.craftions.net/plugins/Lobby/default/system.clean.yml", systemConf);
         }
@@ -36,9 +37,13 @@ public class Lobby extends JavaPlugin {
         if(createFolderRoot(locationConf) && !locationConf.exists()){
             Download.download("https://cdn.craftions.net/plugins/Lobby/default/locations.clean.yml", locationConf);
         }
+        if(createFolderRoot(menuConf) && !menuConf.exists()){
+            Download.download("https://cdn.craftions.net/plugins/Lobby/default/menu.clean.yml", menuConf);
+        }
         Config sysConf = new Config(systemConf, "system");
         Config msgConf = new Config(messageConf, "message");
         Config locConf = new Config(locationConf, "locations");
+        Config menConf = new Config(menuConf, "menu");
         this.prefix = (String) sysConf.get("prefix");
         this.prefix = this.prefix.replaceAll("&", "§");
         System.out.println("Loaded " + this.getDescription().getName() + " v" + this.getDescription().getVersion() + " by" + this.getDescription().getAuthors().toString());
@@ -48,6 +53,7 @@ public class Lobby extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EventPlayerDisconnect(), this);
         Bukkit.getPluginManager().registerEvents(new EventPlayerDamage(), this);
         Bukkit.getPluginManager().registerEvents(new EventFoodLevelChange(), this);
+        Bukkit.getPluginManager().registerEvents(new EventInventoryClick(), this);
         // commands
         getCommand("setspawn").setExecutor(new CommandSetSpawn());
         getCommand("spawn").setExecutor(new CommandSpawn());
