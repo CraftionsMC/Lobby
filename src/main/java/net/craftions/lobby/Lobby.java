@@ -3,6 +3,7 @@
  */
 package net.craftions.lobby;
 
+import net.craftions.lobby.api.Download;
 import net.craftions.lobby.commands.CommandSetSpawn;
 import net.craftions.lobby.commands.CommandSpawn;
 import net.craftions.lobby.config.Config;
@@ -36,37 +37,13 @@ public class Lobby extends JavaPlugin {
         File messageConf = new File("./plugins/lobby/messages.yml");
         File locationConf = new File("./plugins/lobby/locations.yml");
         if(createFolderRoot(systemConf)){
-            try {
-                byte[] content = Files.readAllBytes(Paths.get(getClass().getResource("/system.clean.yml").toURI()));
-                systemConf.createNewFile();
-                FileWriter w = new FileWriter(systemConf);
-                w.write(new String(content, StandardCharsets.UTF_8));
-                w.close();
-            } catch (IOException | URISyntaxException e) {
-                e.printStackTrace();
-            }
+            Download.download("https://cdn.craftions.net/plugins/Lobby/default/system.clean.yml", systemConf);
         }
         if(createFolderRoot(messageConf)){
-            try {
-                byte[] content = Files.readAllBytes(Paths.get(getClass().getResource("/messages.clean.yml").toURI()));
-                messageConf.createNewFile();
-                FileWriter w = new FileWriter(messageConf);
-                w.write(new String(content, StandardCharsets.UTF_8));
-                w.close();
-            } catch (IOException | URISyntaxException e) {
-                e.printStackTrace();
-            }
+            Download.download("https://cdn.craftions.net/plugins/Lobby/default/messages.clean.yml", messageConf);
         }
         if(createFolderRoot(locationConf)){
-            try {
-                byte[] content = Files.readAllBytes(Paths.get(getClass().getResource("/locations.clean.yml").toURI()));
-                locationConf.createNewFile();
-                FileWriter w = new FileWriter(locationConf);
-                w.write(new String(content, StandardCharsets.UTF_8));
-                w.close();
-            } catch (IOException | URISyntaxException e) {
-                e.printStackTrace();
-            }
+            Download.download("https://cdn.craftions.net/plugins/Lobby/default/locations.clean.yml", locationConf);
         }
         Config sysConf = new Config(systemConf, "system");
         Config msgConf = new Config(messageConf, "message");
