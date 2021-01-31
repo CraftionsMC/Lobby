@@ -20,7 +20,7 @@ public class Menu {
 
     public static Inventory getMenu(){
         Inventory inv = Bukkit.createInventory(null, InventoryType.CHEST, (String) Config.getInstance("menu").get("menu_title"));
-        for(String s : Config.getInstance("menu").getAll("content", true)){
+        for(String s : Config.getInstance("menu").getAll("content", false)){
             System.out.println("Addind item " + s);
             int slot = (int) Config.getInstance("menu").get("content." + s + ".slot");
             Material type = Material.getMaterial((String) Config.getInstance("menu").get("content." + s + ".type"));
