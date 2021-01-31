@@ -7,9 +7,7 @@ import net.craftions.lobby.api.Download;
 import net.craftions.lobby.commands.CommandSetSpawn;
 import net.craftions.lobby.commands.CommandSpawn;
 import net.craftions.lobby.config.Config;
-import net.craftions.lobby.events.EventBlockBreak;
-import net.craftions.lobby.events.EventPlayerDisconnect;
-import net.craftions.lobby.events.EventPlayerJoin;
+import net.craftions.lobby.events.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -48,6 +46,8 @@ public class Lobby extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EventBlockBreak(), this);
         Bukkit.getPluginManager().registerEvents(new EventPlayerJoin(), this);
         Bukkit.getPluginManager().registerEvents(new EventPlayerDisconnect(), this);
+        Bukkit.getPluginManager().registerEvents(new EventPlayerDamage(), this);
+        Bukkit.getPluginManager().registerEvents(new EventFoodLevelChange(), this);
         // commands
         getCommand("setspawn").setExecutor(new CommandSetSpawn());
         getCommand("spawn").setExecutor(new CommandSpawn());

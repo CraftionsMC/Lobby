@@ -18,5 +18,6 @@ public class EventPlayerJoin implements Listener {
         msg = msg.replaceAll("%player", e.getPlayer().getName());
         e.setJoinMessage(msg);
         e.getPlayer().teleport((Location) Config.getInstance("locations").get("spawn"));
+        e.getPlayer().setInvulnerable(true);
     }
 }
