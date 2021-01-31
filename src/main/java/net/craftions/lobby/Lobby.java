@@ -14,7 +14,11 @@ import org.bukkit.craftbukkit.libs.org.apache.commons.io.FileUtils;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class Lobby extends JavaPlugin {
 
@@ -33,21 +37,33 @@ public class Lobby extends JavaPlugin {
         File locationConf = new File("./plugins/lobby/locations.yml");
         if(createFolderRoot(systemConf)){
             try {
-                FileUtils.copyInputStreamToFile(this.getResource("/system.clean.yml"), new File("./plugins/Lobby/system.yml"));
+                byte[] content = Files.readAllBytes(Path.of(getClass().getResource("/system.clean.yml").getPath()));
+                systemConf.createNewFile();
+                FileWriter w = new FileWriter(systemConf);
+                w.write(new String(content, StandardCharsets.UTF_8));
+                w.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         if(createFolderRoot(messageConf)){
             try {
-                FileUtils.copyInputStreamToFile(this.getResource("/messages.clean.yml"), new File("./plugins/Lobby/messages.yml"));
+                byte[] content = Files.readAllBytes(Path.of(getClass().getResource("/messages.clean.yml").getPath()));
+                systemConf.createNewFile();
+                FileWriter w = new FileWriter(messageConf);
+                w.write(new String(content, StandardCharsets.UTF_8));
+                w.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         if(createFolderRoot(locationConf)){
             try {
-                FileUtils.copyInputStreamToFile(this.getResource("/locations.clean.yml"), new File("./plugins/Lobby/locations.yml"));
+                byte[] content = Files.readAllBytes(Path.of(getClass().getResource("/locations.clean.yml").getPath()));
+                systemConf.createNewFile();
+                FileWriter w = new FileWriter(locationConf);
+                w.write(new String(content, StandardCharsets.UTF_8));
+                w.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
