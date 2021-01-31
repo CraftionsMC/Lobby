@@ -54,6 +54,7 @@ public class Lobby extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EventPlayerDamage(), this);
         Bukkit.getPluginManager().registerEvents(new EventFoodLevelChange(), this);
         Bukkit.getPluginManager().registerEvents(new EventInventoryClick(), this);
+        Bukkit.getPluginManager().registerEvents(new EventPlayerInteract(), this);
         // commands
         getCommand("setspawn").setExecutor(new CommandSetSpawn());
         getCommand("spawn").setExecutor(new CommandSpawn());
