@@ -2,6 +2,8 @@ name: Lobby
 main: net.craftions.lobby.Lobby
 version: 1.0-SNAPSHOT
 api-version: 1.16
+authors:
+  - MCTzOCK
 commands:
   setspawn:
     permission: craftions.lobby.command.setspawn

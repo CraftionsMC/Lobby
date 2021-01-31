@@ -12,6 +12,9 @@ public class EventPlayerDisconnect implements Listener {
 
     @EventHandler
     public void onDisconnect(PlayerQuitEvent e){
-        e.setQuitMessage(((String) Config.getInstance("message").get("left")).replaceAll("%player", e.getPlayer().getName()).replaceAll("&", "§"));
+        String msg = (String) Config.getInstance("message").get("left");
+        msg = msg.replaceAll("&", "§");
+        msg = msg.replaceAll("%player", e.getPlayer().getName());
+        e.setQuitMessage(msg);
     }
 }

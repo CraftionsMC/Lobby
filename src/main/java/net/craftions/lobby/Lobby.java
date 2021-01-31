@@ -14,13 +14,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class Lobby extends JavaPlugin {
 
@@ -49,6 +42,7 @@ public class Lobby extends JavaPlugin {
         Config msgConf = new Config(messageConf, "message");
         Config locConf = new Config(locationConf, "locations");
         this.prefix = (String) sysConf.get("prefix");
+        this.prefix = this.prefix.replaceAll("&", "§");
         System.out.println("Loaded " + this.getDescription().getName() + " v" + this.getDescription().getVersion() + " by" + this.getDescription().getAuthors().toString());
         // register events
         Bukkit.getPluginManager().registerEvents(new EventBlockBreak(), this);
