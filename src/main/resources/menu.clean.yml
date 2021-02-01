@@ -6,7 +6,7 @@ content:
     slot: 0
     type: 'IRON_SWORD'
     display: '&cSkyWars'
-    action: 'teleport' # teleport or none
+    action: 'teleport'
     teleport:
       ==: org.bukkit.Location
       world: world

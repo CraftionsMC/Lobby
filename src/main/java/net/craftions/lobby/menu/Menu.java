@@ -32,7 +32,7 @@ public class Menu {
             ItemMeta meta = item.getItemMeta();
             meta.setDisplayName(display);
             item.setItemMeta(meta);
-            if(Config.getInstance("menu").get("content." + s + ".action").equals("teleport")){
+            if(((String) Config.getInstance("menu").get("content." + s + ".action")).equals("teleport")){
                 Location teleport = (Location) Config.getInstance("menu").get("content." + s + ".teleport");
                 tpTo.put(item, teleport);
             }
