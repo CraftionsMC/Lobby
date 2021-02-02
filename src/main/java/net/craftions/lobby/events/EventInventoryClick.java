@@ -14,14 +14,11 @@ public class EventInventoryClick implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e){
-        if(e.getView().getTitle().equals((String) Config.getInstance("menu").get("menu_title"))){
-            System.out.println("DEBUG");
-            if(Menu.tpTo.containsKey(e.getCurrentItem())){
-                System.out.println("TEST");
-                Location loc = Menu.tpTo.get(e.getCurrentItem());
-                e.getWhoClicked().closeInventory();
-                e.getWhoClicked().teleport(loc);
-            }
+        if(Menu.tpTo.containsKey(e.getCurrentItem())){
+            System.out.println("TEST");
+            Location loc = Menu.tpTo.get(e.getCurrentItem());
+            e.getWhoClicked().closeInventory();
+            e.getWhoClicked().teleport(loc);
             e.setCancelled(true);
         }
     }
