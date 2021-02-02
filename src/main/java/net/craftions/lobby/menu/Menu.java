@@ -17,6 +17,7 @@ import java.util.HashMap;
 public class Menu {
 
     public static HashMap<ItemStack, Location> tpTo = new HashMap<>();
+
     public static Inventory getMenu(){
         String title = (String) Config.getInstance("menu").get("menu_title");
         title = title.replaceAll("&", "§");

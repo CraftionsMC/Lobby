@@ -14,12 +14,15 @@ public class EventInventoryClick implements Listener {
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e){
-        if(Menu.tpTo.containsKey(e.getCurrentItem())){
-            System.out.println("TEST");
-            Location loc = Menu.tpTo.get(e.getCurrentItem());
-            e.getWhoClicked().closeInventory();
-            e.getWhoClicked().teleport(loc);
-            e.setCancelled(true);
+        try {
+            if(Menu.tpTo.containsKey(e.getCurrentItem())){
+                Location loc = Menu.tpTo.get(e.getCurrentItem());
+                e.getWhoClicked().closeInventory();
+                e.getWhoClicked().teleport(loc);
+                e.setCancelled(true);
+            }
+        }catch (NullPointerException ex){
+
         }
     }
 }

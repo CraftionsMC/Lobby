@@ -46,8 +46,6 @@ public class Lobby extends JavaPlugin {
         Config menConf = new Config(menuConf, "menu");
         this.prefix = (String) sysConf.get("prefix");
         this.prefix = this.prefix.replaceAll("&", "§");
-        System.out.println("Loaded " + this.getDescription().getName() + " v" + this.getDescription().getVersion() + " by" + this.getDescription().getAuthors().toString());
-        // register events
         Bukkit.getPluginManager().registerEvents(new EventBlockBreak(), this);
         Bukkit.getPluginManager().registerEvents(new EventPlayerJoin(), this);
         Bukkit.getPluginManager().registerEvents(new EventPlayerDisconnect(), this);
@@ -55,9 +53,11 @@ public class Lobby extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EventFoodLevelChange(), this);
         Bukkit.getPluginManager().registerEvents(new EventInventoryClick(), this);
         Bukkit.getPluginManager().registerEvents(new EventPlayerInteract(), this);
-        // commands
+        Bukkit.getPluginManager().registerEvents(new EventSignEdit(), this);
         getCommand("setspawn").setExecutor(new CommandSetSpawn());
         getCommand("spawn").setExecutor(new CommandSpawn());
+        getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        System.out.println("Loaded " + this.getDescription().getName() + " v" + this.getDescription().getVersion() + " by" + this.getDescription().getAuthors().toString());
         super.onEnable();
     }
 
