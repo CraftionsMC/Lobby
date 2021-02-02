@@ -14,11 +14,9 @@ public class EventSignEdit implements Listener {
 
     @EventHandler
     public void onSignEdit(SignChangeEvent e){
-        if(e.getBlock().getType().equals(Material.OAK_SIGN)){
+        if(e.getLine(0).equals("[Warp]")){
             Sign sign = (Sign) e.getBlock().getState();
-            if(sign.getLine(0).equals("[Warp]")){
-                Signs.regenerateSign(sign);
-            }
+            Signs.regenerateSign(sign);
         }
     }
 }
