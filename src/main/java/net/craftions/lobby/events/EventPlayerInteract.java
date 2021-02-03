@@ -3,9 +3,9 @@
  */
 package net.craftions.lobby.events;
 
+import net.craftions.lobby.api.BungeeCordConnector;
 import net.craftions.lobby.config.Config;
 import net.craftions.lobby.menu.Menu;
-import net.craftions.lobby.signs.Signs;
 import org.bukkit.Material;
 import org.bukkit.block.Sign;
 import org.bukkit.event.EventHandler;
@@ -17,8 +17,8 @@ public class EventPlayerInteract implements Listener {
     @EventHandler
     public void onInteract(PlayerInteractEvent e){
         try {
-            if(e.getClickedBlock().getType().equals(Material.OAK_SIGN)){
-                Signs.processSign((Sign) e.getClickedBlock().getState(), e.getPlayer());
+            if(e.getClickedBlock().getType().equals(Material.OAK_WALL_SIGN)){
+                BungeeCordConnector.connect(e.getPlayer(), ((Sign) e.getClickedBlock().getState()).getLine(1));
             }
         }catch (NullPointerException ex){
             try {

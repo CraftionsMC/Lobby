@@ -3,8 +3,6 @@
  */
 package net.craftions.lobby.events;
 
-import net.craftions.lobby.signs.Signs;
-import org.bukkit.Material;
 import org.bukkit.block.Sign;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,7 +14,9 @@ public class EventSignEdit implements Listener {
     public void onSignEdit(SignChangeEvent e){
         if(e.getLine(0).equals("[Warp]")){
             Sign sign = (Sign) e.getBlock().getState();
-            Signs.regenerateSign(sign);
+            e.setLine(0, "[§aWarp§r]");
+            e.setLine(1, e.getLine(1));
+            e.setLine(2, e.getLine(2));
         }
     }
 }

@@ -3,7 +3,6 @@
  */
 package net.craftions.lobby.events;
 
-import net.craftions.lobby.config.Config;
 import net.craftions.lobby.menu.Menu;
 import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
