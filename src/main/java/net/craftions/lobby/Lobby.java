@@ -55,6 +55,7 @@ public class Lobby extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EventPlayerInteract(), this);
         Bukkit.getPluginManager().registerEvents(new EventSignEdit(), this);
         Bukkit.getPluginManager().registerEvents(new EventBlockPlace(), this);
+        Bukkit.getPluginManager().registerEvents(new EventItemDrop(), this);
         getCommand("setspawn").setExecutor(new CommandSetSpawn());
         getCommand("spawn").setExecutor(new CommandSpawn());
         getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
