@@ -30,5 +30,6 @@ public class EventPlayerJoin implements Listener {
         menu.setItemMeta(menuMeta);
         e.getPlayer().getInventory().clear();
         e.getPlayer().getInventory().setItem(0, menu);
+        e.getPlayer().setAllowFlight(true);
     }
 }
