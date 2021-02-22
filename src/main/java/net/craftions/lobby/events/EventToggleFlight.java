@@ -12,7 +12,7 @@ public class EventToggleFlight implements Listener {
     public void onToggleFlight(PlayerToggleFlightEvent e) {
         if (e.getPlayer().getGameMode().equals(GameMode.ADVENTURE) || e.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
             e.setCancelled(true);
-            if (e.getPlayer().getFallDistance() != 0) return;
+            if (e.getPlayer().getFallDistance() <= 0.25) return;
             if (e.getPlayer().getLocation().subtract(0, 2, 0).getBlock().getType() != Material.AIR) return;
             Location loc = e.getPlayer().getEyeLocation().clone();
             loc.setPitch(-30F);
