@@ -19,7 +19,6 @@ public class EventToggleFlight implements Listener {
             loc.setPitch(-22.5F);
             Vector vec = loc.getDirection().normalize().multiply(2);
             e.getPlayer().setVelocity(vec);
-            e.getPlayer().setFlying(false);
         }
     }
 }
