@@ -16,10 +16,9 @@ public class EventToggleFlight implements Listener {
             if (e.getPlayer().getFallDistance() != 0) return;
             if (e.getPlayer().getLocation().subtract(0, 2, 0).getBlock().getType() != Material.AIR) return;
             Location loc = e.getPlayer().getEyeLocation().clone();
-            loc.setPitch(22.5F);
+            loc.setPitch(-22.5F);
             Vector vec = loc.getDirection().normalize().multiply(2);
             e.getPlayer().setVelocity(vec);
-            e.getPlayer().setFlying(false);
         }
     }
 }
