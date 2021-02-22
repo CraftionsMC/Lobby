@@ -6,7 +6,6 @@ import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
-import org.bukkit.util.Vector;
 
 public class EventToggleFlight implements Listener {
     @EventHandler
@@ -16,9 +15,8 @@ public class EventToggleFlight implements Listener {
             if (e.getPlayer().getFallDistance() != 0) return;
             if (e.getPlayer().getLocation().subtract(0, 2, 0).getBlock().getType() != Material.AIR) return;
             Location loc = e.getPlayer().getEyeLocation().clone();
-            loc.setPitch(-22.5F);
-            Vector vec = loc.getDirection().normalize().multiply(2);
-            e.getPlayer().setVelocity(vec);
+            loc.setPitch(-30F);
+            e.getPlayer().setVelocity(loc.getDirection().normalize().multiply(1.5));
         }
     }
 }
