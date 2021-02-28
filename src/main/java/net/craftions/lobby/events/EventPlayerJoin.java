@@ -30,13 +30,8 @@ public class EventPlayerJoin implements Listener {
         menuMeta.setDisplayName(display);
         menu.setItemMeta(menuMeta);
 
-        ItemStack perks = new ItemStack(Material.BLAZE_ROD);
-        ItemMeta perksMeta = perks.getItemMeta();
-        perksMeta.setDisplayName("§5Perks");
-        perks.setItemMeta(perksMeta);
         e.getPlayer().getInventory().clear();
         e.getPlayer().getInventory().setItem(0, menu);
-        e.getPlayer().getInventory().setItem(1, perks);
         e.getPlayer().setAllowFlight(true);
     }
 }
