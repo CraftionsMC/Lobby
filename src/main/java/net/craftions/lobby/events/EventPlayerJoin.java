@@ -22,14 +22,21 @@ public class EventPlayerJoin implements Listener {
         e.setJoinMessage(msg);
         e.getPlayer().teleport((Location) Config.getInstance("locations").get("spawn"));
         e.getPlayer().setInvulnerable(true);
+
         ItemStack menu = new ItemStack(Material.getMaterial((String) Config.getInstance("menu").get("item")));
         ItemMeta menuMeta = menu.getItemMeta();
         String display = (String) Config.getInstance("menu").get("item_name");
         display = display.replaceAll("&", "§");
         menuMeta.setDisplayName(display);
         menu.setItemMeta(menuMeta);
+
+        ItemStack perks = new ItemStack(Material.BLAZE_ROD);
+        ItemMeta perksMeta = perks.getItemMeta();
+        perksMeta.setDisplayName("§5Perks");
+        perks.setItemMeta(perksMeta);
         e.getPlayer().getInventory().clear();
         e.getPlayer().getInventory().setItem(0, menu);
+        e.getPlayer().getInventory().setItem(1, perks);
         e.getPlayer().setAllowFlight(true);
     }
 }
