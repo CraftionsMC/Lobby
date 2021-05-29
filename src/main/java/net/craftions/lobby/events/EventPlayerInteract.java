@@ -16,19 +16,18 @@ public class EventPlayerInteract implements Listener {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent e){
-        try {
+        if(e.getClickedBlock() != null){
             if(e.getClickedBlock().getType().equals(Material.OAK_WALL_SIGN)){
                 BungeeCordConnector.connect(e.getPlayer(), ((Sign) e.getClickedBlock().getState()).getLine(1));
             }
-        }catch (NullPointerException ex){
-            try {
-                String display = (String) Config.getInstance("menu").get("item_name");
-                display = display.replaceAll("&", "§");
-                if(e.getItem().getItemMeta().getDisplayName().equals(display)) {
-                    e.getPlayer().openInventory(Menu.getMenu());
-                }
-                e.setCancelled(true);
-            }catch (NullPointerException ex0){ }
+        }
+        if(e.getItem() != null) {
+            String display = (String) Config.getInstance("menu").get("item_name");
+            display = display.replaceAll("&", "§");
+            if(e.getItem().getItemMeta().getDisplayName().equals(display)) {
+                e.getPlayer().openInventory(Menu.getMenu());
+            }
+            e.setCancelled(true);
         }
     }
 }
