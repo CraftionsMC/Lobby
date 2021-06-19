@@ -26,8 +26,8 @@ public class EventPlayerInteract implements Listener {
             display = display.replaceAll("&", "§");
             if(e.getItem().getItemMeta().getDisplayName().equals(display)) {
                 e.getPlayer().openInventory(Menu.getMenu());
+                e.setCancelled(true);
             }
-            e.setCancelled(true);
         }
     }
 }
