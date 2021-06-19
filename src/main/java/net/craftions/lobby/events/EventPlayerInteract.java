@@ -6,6 +6,7 @@ package net.craftions.lobby.events;
 import net.craftions.lobby.api.BungeeCordConnector;
 import net.craftions.lobby.config.Config;
 import net.craftions.lobby.menu.Menu;
+import net.craftions.lobby.menu.PlayerFilter;
 import org.bukkit.Material;
 import org.bukkit.block.Sign;
 import org.bukkit.event.EventHandler;
@@ -26,6 +27,10 @@ public class EventPlayerInteract implements Listener {
             display = display.replaceAll("&", "§");
             if(e.getItem().getItemMeta().getDisplayName().equals(display)) {
                 e.getPlayer().openInventory(Menu.getMenu());
+                e.setCancelled(true);
+            }
+            if(e.getItem().getItemMeta().getDisplayName().equals("§6Player Filter")){
+                e.getPlayer().openInventory(PlayerFilter.getMenu());
                 e.setCancelled(true);
             }
         }

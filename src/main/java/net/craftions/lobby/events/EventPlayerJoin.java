@@ -30,6 +30,12 @@ public class EventPlayerJoin implements Listener {
         menuMeta.setDisplayName(display);
         menu.setItemMeta(menuMeta);
 
+        ItemStack changePlayerVisibility = new ItemStack(Material.TRIPWIRE_HOOK);
+        ItemMeta changeMeta = changePlayerVisibility.getItemMeta();
+        changeMeta.setDisplayName("§6Player Filter");
+        changePlayerVisibility.setItemMeta(changeMeta);
+
         e.getPlayer().getInventory().setItem(0, menu);
+        e.getPlayer().getInventory().setItem(3, changePlayerVisibility);
     }
 }
