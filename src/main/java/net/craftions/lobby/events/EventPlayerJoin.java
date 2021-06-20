@@ -37,5 +37,6 @@ public class EventPlayerJoin implements Listener {
 
         e.getPlayer().getInventory().setItem(0, menu);
         e.getPlayer().getInventory().setItem(3, changePlayerVisibility);
+        e.getPlayer().getInventory().setItem(5, new ItemStack(Material.ENDER_PEARL, 3));
     }
 }

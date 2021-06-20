@@ -33,6 +33,9 @@ public class EventPlayerInteract implements Listener {
                 e.getPlayer().openInventory(PlayerFilter.getMenu());
                 e.setCancelled(true);
             }
+            if(e.getItem().getType().equals(Material.ENDER_PEARL) && !e.getItem().getItemMeta().getDisplayName().equals("§cShop")){
+                e.getItem().setAmount(3);
+            }
         }
     }
 }
